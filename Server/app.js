@@ -13,6 +13,8 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 //const bcrypt = require('bcrypt');
 const session = require('express-session');
+const PgSession = require('connect-pg-simple')(session);
+
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 
@@ -22,16 +24,6 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(
-  session({
-    secret: 'notguilty2010', 
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false }, 
-  })
-);
-
-
 const pool = new Pool({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
@@ -39,6 +31,19 @@ const pool = new Pool({
   password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT,
 });
+
+const sessionConfig = {
+  store: new PgSession({
+    pool: pool, 
+    tableName: 'session', 
+  }),
+  secret: 'notguilty2010',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false },
+};
+
+app.use(session(sessionConfig)); 
 
 console.log(process.env.DB_USER)
 console.log(process.env.DB_HOST)

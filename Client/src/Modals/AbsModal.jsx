@@ -12,11 +12,12 @@ const AbsModal = ({ isOpen, onRequestClose }) => {
     const { sessionTitle, lastAbsDate, setAbsDays, setLastAbsDate } = absContext;
     const {theToken} = useContext(TokenContext);
     const [hasButtonBeenPressed, setHasButtonBeenPressed] = useState(false);
+    const {backendUrl} = useContext(devOrProdContext);
 
 
   useEffect(() => {
     if (hasButtonBeenPressed) {
-    fetch('http://localhost:3000/abs', {
+      fetch(`${backendUrl}/abs`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

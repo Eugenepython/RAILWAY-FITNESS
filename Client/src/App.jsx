@@ -23,6 +23,8 @@ function getDate(input){
 
 function App() {  
 
+  //const backendUrl = 'http://localhost:3000'  // use this when in development !!!
+const backendUrl = 'https://myfitness-server-production.up.railway.app' // use this when in production¬!!!
   const [entryOpen, setEntryOpen] = useState(true);
 
   function loggedIn () {
@@ -64,9 +66,7 @@ function App() {
 const [sessionTitle, setSessionTitle] = useState('')
 
 const [theToken, setTheToken] = useState('')  
- 
-const backendUrl = 'http://localhost:3000'  // use this when in development !!!
-//const backendUrl = 'https://myfitness-server-production.up.railway.app' // use this when in production¬!!!
+
 
 useEffect(() => {
   const userData = { 

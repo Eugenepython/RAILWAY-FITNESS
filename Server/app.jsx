@@ -1,11 +1,12 @@
 const express = require('express');
 const { Pool } = require('pg');
 const pgp = require('pg-promise')();
-const db = pgp('postgres://postgres:vienna1981@localhost:5432/fitness');
-
-
-
 require('dotenv').config();
+
+//const db = pgp('postgres://postgres:vienna1981@localhost:5432/fitness');
+const db = pgp(process.env.DATABASE_URL);
+
+
 const cors = require('cors');
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -22,13 +23,13 @@ app.use(cookieParser());
 
 app.use(
   session({
-    secret: 'notguilty2010', // Replace with a secure secret
+    secret: 'notguilty2010', 
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }, // Set secure to true in production (HTTPS)
+    cookie: { secure: false }, 
   })
 );
-console.log(process.env.DB_USER + " is the user")
+
 
 const pool = new Pool({
   user: process.env.DB_USER,
@@ -44,7 +45,6 @@ console.log(process.env.DB_NAME)
 console.log(process.env.DB_PASSWORD)
 console.log(pool.options.user)
 
-console.log("workinga little bit?")
 console.log(process.env.DB_PORT)
 
 

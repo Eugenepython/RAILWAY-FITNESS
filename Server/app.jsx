@@ -4,6 +4,7 @@ const pgp = require('pg-promise')();
 require('dotenv').config();
 
 //const db = pgp('postgres://postgres:vienna1981@localhost:5432/fitness');
+
 const db = pgp(process.env.DATABASE_URL);
 
 

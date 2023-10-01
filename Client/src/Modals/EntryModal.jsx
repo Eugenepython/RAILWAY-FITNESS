@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Modal from 'react-modal';
 
-import { UserNameContext, TokenContext, EntryContext } from "../Contexts/Context";
+import { UserNameContext, TokenContext, EntryContext, devOrProdContext  } from "../Contexts/Context";
 
 const EntryModal = () => {
 
@@ -11,6 +11,8 @@ const [signinOpen, setSigninOpen] = useState(false);
 const {sessionTitle, setSessionTitle} = useContext(UserNameContext);
 const {theToken, setTheToken} = useContext(TokenContext);
 const {entryOpen, setEntryOpen} = useContext(EntryContext);
+const {backendUrl} = useContext(devOrProdContext);
+
 
 const initialSignInData = {
     username: '',
@@ -55,7 +57,8 @@ function handleSubmitSignIn(event) {
   event.preventDefault();
   //console.log(signInData);
   //onRequestClose();
-  fetch('http://localhost:3000/login', {
+  //fetch('http://localhost:3000/login', {
+    fetch(`${backendUrl}/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

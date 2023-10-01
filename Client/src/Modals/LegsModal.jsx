@@ -1,17 +1,18 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Modal from 'react-modal';
-import { LegsDaysContext } from "../Contexts/Context";
+import { LegsDaysContext, devOrProdContext  } from "../Contexts/Context";
 import {convertToCompatibleDateFormat, calculateDateDifferenceInDays} from '../dataUtils';
 
 
 const LegsModal = ({ isOpen, onRequestClose }) => {
     
-        const [legsDate, setLegsDate] = useState("");
-        const [value, setValue] = useState("");
-        const [days, setDays] = useState(""); 
-        const legsContext = useContext(LegsDaysContext);
-        const { sessionTitle, lastLegsDate, setLegsDays, setLastLegsDate } = legsContext;
-        const [hasButtonBeenPressed, setHasButtonBeenPressed] = useState(false);
+const [legsDate, setLegsDate] = useState("");
+const [value, setValue] = useState("");
+const [days, setDays] = useState(""); 
+const legsContext = useContext(LegsDaysContext);
+const { sessionTitle, lastLegsDate, setLegsDays, setLastLegsDate } = legsContext;
+const [hasButtonBeenPressed, setHasButtonBeenPressed] = useState(false);
+const {backendUrl} = useContext(devOrProdContext);
         //console.log(legsContext)
 
 
@@ -30,7 +31,8 @@ const LegsModal = ({ isOpen, onRequestClose }) => {
 
 useEffect(() => {
     if (hasButtonBeenPressed) {
-    fetch('http://localhost:3000/legs', {
+    fetch(`${backendUrl}/legs`, {
+    //fetch('http://localhost:3000/legs', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',

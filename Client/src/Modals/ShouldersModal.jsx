@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Modal from 'react-modal';
-import { ShouldersDaysContext } from "../Contexts/Context";
+import { ShouldersDaysContext, devOrProdContext  } from "../Contexts/Context";
 import {convertToCompatibleDateFormat, calculateDateDifferenceInDays} from '../dataUtils';
 
 const ShouldersModal = ({ isOpen, onRequestClose }) => {
@@ -10,6 +10,7 @@ const [value, setValue] = useState("");
 const [days, setDays] = useState(""); 
 const shouldersContext = useContext(ShouldersDaysContext);
 const { sessionTitle, lastShouldersDate, setShouldersDays, setLastShouldersDate } = shouldersContext;
+const {backendUrl} = useContext(devOrProdContext);
 const [hasButtonBeenPressed, setHasButtonBeenPressed] = useState(false);
 
 function handleSubmit(event) {
@@ -27,7 +28,8 @@ setShouldersDate(event.target.value);
 
 useEffect(() => {
     if (hasButtonBeenPressed) {
-    fetch('http://localhost:3000/shoulders', {  
+    fetch(`${backendUrl}/shoulders`, {
+    //fetch('http://localhost:3000/shoulders', {  
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',

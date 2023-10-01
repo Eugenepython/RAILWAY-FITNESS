@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Modal from 'react-modal';
-import { AbsDaysContext, TokenContext } from "../Contexts/Context";
+import { AbsDaysContext, TokenContext, devOrProdContext } from "../Contexts/Context";
 import {convertToCompatibleDateFormat, calculateDateDifferenceInDays} from '../dataUtils';
 
 const AbsModal = ({ isOpen, onRequestClose }) => {
@@ -12,7 +12,7 @@ const AbsModal = ({ isOpen, onRequestClose }) => {
     const { sessionTitle, lastAbsDate, setAbsDays, setLastAbsDate } = absContext;
     const {theToken} = useContext(TokenContext);
     const [hasButtonBeenPressed, setHasButtonBeenPressed] = useState(false);
- 
+
 
   useEffect(() => {
     if (hasButtonBeenPressed) {

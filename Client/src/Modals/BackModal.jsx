@@ -1,16 +1,17 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Modal from 'react-modal';
-import { BackDaysContext } from "../Contexts/Context";
+import { BackDaysContext, devOrProdContext  } from "../Contexts/Context";
 import {convertToCompatibleDateFormat, calculateDateDifferenceInDays} from '../dataUtils';
 
 const BackModal = ({ isOpen, onRequestClose }) => {
     
-    const [backDate, setBackDate] = useState("");
-    const [value, setValue] = useState("");
-    const [days, setDays] = useState(""); 
-    const backContext = useContext(BackDaysContext);
-    const { sessionTitle, lastBackDate, setBackDays, setLastBackDate } = backContext;
-    const [hasButtonBeenPressed, setHasButtonBeenPressed] = useState(false);
+const [backDate, setBackDate] = useState("");
+const [value, setValue] = useState("");
+const [days, setDays] = useState(""); 
+const backContext = useContext(BackDaysContext);
+const { sessionTitle, lastBackDate, setBackDays, setLastBackDate } = backContext;
+const [hasButtonBeenPressed, setHasButtonBeenPressed] = useState(false);
+const {backendUrl} = useContext(devOrProdContext);
 
 function handleSubmit(event) {
     event.preventDefault();
@@ -28,7 +29,8 @@ function handleSubmit(event) {
 
   useEffect(() => {
     if (hasButtonBeenPressed) {
-    fetch('http://localhost:3000/back', {
+      fetch(`${backendUrl}/back`, {
+    //fetch('http://localhost:3000/back', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

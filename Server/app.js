@@ -3,8 +3,6 @@ const { Pool } = require('pg');
 const pgp = require('pg-promise')();
 require('dotenv').config();
 
-//const db = pgp('postgres://postgres:vienna1981@localhost:5432/fitness');
-
 const db = pgp(process.env.DATABASE_URL);
 
 
@@ -20,7 +18,6 @@ const jwt = require('jsonwebtoken');
 
 const historyArray = [];
 
-app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
@@ -50,8 +47,18 @@ console.log(process.env.DB_HOST)
 console.log(process.env.DB_NAME)
 console.log(process.env.DB_PASSWORD)
 console.log(pool.options.user)
-
 console.log(process.env.DB_PORT)
+
+const prodFrontendURL = process.env.FRONTEND_URL;
+const devFrontendURL = 'http://localhost:5173';
+
+app.use(
+  cors({
+    origin: [devFrontendURL,prodFrontendURL],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  })
+);
 
 
 app.get('/', (req, res) => {

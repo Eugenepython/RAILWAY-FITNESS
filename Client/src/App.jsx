@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import TheBody from './TheBody'
-import { HistoryContext, EntryContext,  AbsDaysContext, ArmsDaysContext, BackDaysContext, ChestDaysContext, LegsDaysContext, ShouldersDaysContext, UserNameContext, TokenContext  } from "./Contexts/Context";
+import { devOrProdContext,  HistoryContext, EntryContext,  AbsDaysContext, ArmsDaysContext, BackDaysContext, ChestDaysContext, LegsDaysContext, ShouldersDaysContext, UserNameContext, TokenContext  } from "./Contexts/Context";
 import {calculateDateDifferenceInDays} from './dataUtils';
 import EntryModal from './Modals/EntryModal'
 
@@ -65,16 +65,16 @@ const [sessionTitle, setSessionTitle] = useState('')
 
 const [theToken, setTheToken] = useState('')  
  
-
-//const userData = 'sessionTitle'
-//console.log(userData.player)
+const backendUrl = 'http://localhost:3000'  // use this when in development !!!
+//const backendUrl = 'https://myfitness-server-production.up.railway.app' // use this when in production¬!!!
 
 useEffect(() => {
   const userData = { 
     userName: sessionTitle 
   };
   //console.log(userData)
-  fetch('http://localhost:3000/dates', {
+  fetch(`${backendUrl}/dates`, {
+  //fetch('http://localhost:3000/dates', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -124,12 +124,14 @@ shouldersArray.length > 0 ? setLastShouldersDate(getDate(shouldersArray[shoulder
  //console.log(daysSinceBack + ' daysSinceBack')
   //console.log(chestDays + ' chestDays')
 
+
+
  console.log(sessionTitle + ' sessionTitle')
   return (
     <>
       <div>
 
-      
+     
 <TokenContext.Provider value={{ theToken, setTheToken}}>
 <UserNameContext.Provider value={{ sessionTitle, setSessionTitle}}>
 <AbsDaysContext.Provider value={{ daysSinceAbs, setAbsDays, absDays, lastAbsDate, setLastAbsDate, todayDate, sessionTitle }}>
@@ -139,13 +141,12 @@ shouldersArray.length > 0 ? setLastShouldersDate(getDate(shouldersArray[shoulder
 <LegsDaysContext.Provider value={{ daysSinceLegs, setLegsDays, legsDays, lastLegsDate, setLastLegsDate, todayDate, sessionTitle}}>
 <ShouldersDaysContext.Provider value={{ daysSinceShoulders, setShouldersDays, shouldersDays, lastShouldersDate, setLastShouldersDate, todayDate, sessionTitle}}>
 <EntryContext.Provider value={{ entryOpen, setEntryOpen, closeModal }}>
-
+<devOrProdContext.Provider value={{ backendUrl }}>
 
 <EntryModal  /> 
-
 {theToken ? <TheBody/> : null}
 
-
+</devOrProdContext.Provider>
 </EntryContext.Provider>
 </ShouldersDaysContext.Provider>
 </LegsDaysContext.Provider>

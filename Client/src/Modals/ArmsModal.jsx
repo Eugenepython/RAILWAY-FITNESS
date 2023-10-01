@@ -1,16 +1,17 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Modal from 'react-modal';
-import { ArmsDaysContext } from "../Contexts/Context";
+import { ArmsDaysContext, devOrProdContext  } from "../Contexts/Context";
 import {convertToCompatibleDateFormat, calculateDateDifferenceInDays} from '../dataUtils';
 
 const ArmsModal = ({ isOpen, onRequestClose }) => {
 
-    const [armsDate, setArmsDate] = useState("");
-    const [value, setValue] = useState("");
-    const [days, setDays] = useState(""); 
-    const [hasButtonBeenPressed, setHasButtonBeenPressed] = useState(false);
-    const armsContext = useContext(ArmsDaysContext);
-    const { sessionTitle, lastArmsDate, setArmsDays, setLastArmsDate } = armsContext;
+const [armsDate, setArmsDate] = useState("");
+const [value, setValue] = useState("");
+const [days, setDays] = useState(""); 
+const [hasButtonBeenPressed, setHasButtonBeenPressed] = useState(false);
+const armsContext = useContext(ArmsDaysContext);
+const { sessionTitle, lastArmsDate, setArmsDays, setLastArmsDate } = armsContext;
+const {backendUrl} = useContext(devOrProdContext);
 
 function handleSubmit(event) {
     event.preventDefault();
@@ -32,7 +33,8 @@ function handleInputChange(event) {
 
   useEffect(() => {
     if (hasButtonBeenPressed) {
-    fetch('http://localhost:3000/arms', {
+    //fetch('http://localhost:3000/arms', {
+      fetch(`${backendUrl}/arms`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

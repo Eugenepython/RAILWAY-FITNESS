@@ -1,17 +1,18 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Modal from 'react-modal';
-import { ChestDaysContext } from "../Contexts/Context";
+import { ChestDaysContext, devOrProdContext  } from "../Contexts/Context";
 import {convertToCompatibleDateFormat, calculateDateDifferenceInDays} from '../dataUtils';
 
 
 const ChestModal = ({ isOpen, onRequestClose }) => {
 
-    const [chestDate, setChestDate] = useState("");
-    const [value, setValue] = useState("");
-    const [days, setDays] = useState(""); 
-    const chestContext = useContext(ChestDaysContext);
-    const { sessionTitle, lastChestDate, setChestDays, setLastChestDate } = chestContext;
-    const [hasButtonBeenPressed, setHasButtonBeenPressed] = useState(false);
+const [chestDate, setChestDate] = useState("");
+const [value, setValue] = useState("");
+const [days, setDays] = useState(""); 
+const chestContext = useContext(ChestDaysContext);
+const { sessionTitle, lastChestDate, setChestDays, setLastChestDate } = chestContext;
+const [hasButtonBeenPressed, setHasButtonBeenPressed] = useState(false);
+const {backendUrl} = useContext(devOrProdContext);
 
 
 function handleSubmit(event) {
@@ -29,7 +30,8 @@ function handleSubmit(event) {
 
 useEffect(() => {
     if (hasButtonBeenPressed) {
-    fetch('http://localhost:3000/chest', {
+        fetch(`${backendUrl}/chest`, {
+    //fetch('http://localhost:3000/chest', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',

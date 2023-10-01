@@ -11,7 +11,8 @@ const UserNameContext = React.createContext();
 const TokenContext = React.createContext();
 const EntryContext = React.createContext();
 const HistoryContext = React.createContext();
+const devOrProdContext = React.createContext();
 
-export { HistoryContext, EntryContext, AbsDaysContext, ArmsDaysContext, BackDaysContext, ChestDaysContext, LegsDaysContext, ShouldersDaysContext, UserNameContext, TokenContext };
+export { devOrProdContext, HistoryContext, EntryContext, AbsDaysContext, ArmsDaysContext, BackDaysContext, ChestDaysContext, LegsDaysContext, ShouldersDaysContext, UserNameContext, TokenContext };
 
 

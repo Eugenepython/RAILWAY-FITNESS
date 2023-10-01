@@ -129,7 +129,7 @@ function handleInputChange(event) {
 
 function handleNewUserChange(event) {
       const { name, value } = event.target;
-      console.log(secondNewPass)
+      //console.log(secondNewPass)
       if (name === 'newUserPassword'){
           setFirstNewPass(value)
       } else if (name === 'repeatNewUserPassword'){

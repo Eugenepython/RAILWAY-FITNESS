@@ -54,7 +54,7 @@ const devFrontendURL = 'http://localhost:5173';
 
 app.use(
   cors({
-    origin: [devFrontendURL,prodFrontendURL],
+    origin: [prodFrontendURL],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   })

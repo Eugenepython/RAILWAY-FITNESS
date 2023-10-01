@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "react-scripts build",
     "start": "serve build -s -n -L -p $PORT",
-    "dev": "nodemon app.jsx",
-    "deploy": "node app.jsx"
+    "dev": "nodemon app.js",
+    "deploy": "node app.js"
   },
   "keywords": [],
   "author": "",

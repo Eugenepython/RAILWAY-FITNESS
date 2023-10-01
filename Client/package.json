@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "start": "echo 'Frontend is served by Caddy, no need to start.'"
+    "start": "echo 'Frontend is served by Caddy, so not started in packag.json'"
   },
   "dependencies": {
     "jsonwebtoken": "^9.0.2",

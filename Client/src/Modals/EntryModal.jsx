@@ -94,7 +94,7 @@ function handleSubmitSignUp(event){
             username: signUpData.newUserName, // Use newUserName as email
             password: firstNewPass,        // Use the first password as password
           };
-          fetch('http://localhost:3000/register', { /// this is line 54
+          fetch(`${import.meta.env.VITE_BACKEND_API_URL}/register`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

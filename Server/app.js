@@ -29,6 +29,9 @@ const pool = new Pool({
   port: process.env.DB_PORT,
 });
 
+console.log(process.env.NODE_ENV + " is the node environment")
+
+
 const sessionConfig = {
   store: new PgSession({
     pool: pool, 
@@ -54,7 +57,7 @@ const devFrontendURL = 'http://localhost:5173';
 
 app.use(
   cors({
-    origin: [prodFrontendURL],
+    origin: [prodFrontendURL, devFrontendURL],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   })
@@ -396,5 +399,8 @@ app.post('/login', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
+
 
 

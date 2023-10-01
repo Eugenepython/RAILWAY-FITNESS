@@ -34,7 +34,7 @@ function handleInputChange(event) {
   useEffect(() => {
     if (hasButtonBeenPressed) {
     //fetch('http://localhost:3000/arms', {
-      fetch(`${backendUrl}/arms`, {
+      fetch(`${import.meta.env.VITE_BACKEND_API_URL}/arms`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

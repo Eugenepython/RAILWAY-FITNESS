@@ -25,8 +25,7 @@ function App() {
 
 //const backendUrl = 'http://localhost:3000'  // use this when in development !!!
 //const backendUrl = 'https://myfitness-server-production.up.railway.app' // use this when in production¬!!!
-
-const backendUrl = import.meta.env.VITE_BACKEND_API_URL
+//const backendUrl = import.meta.env.VITE_BACKEND_API_URL
 
   const [entryOpen, setEntryOpen] = useState(true);
 
@@ -76,7 +75,7 @@ useEffect(() => {
     userName: sessionTitle 
   };
   //console.log(userData)
-  fetch(`${backendUrl}/dates`, {
+  fetch(`${import.meta.env.VITE_BACKEND_API_URL}/dates`, {
   //fetch('http://localhost:3000/dates', {
     method: 'POST',
     headers: {
@@ -144,7 +143,7 @@ shouldersArray.length > 0 ? setLastShouldersDate(getDate(shouldersArray[shoulder
 <LegsDaysContext.Provider value={{ daysSinceLegs, setLegsDays, legsDays, lastLegsDate, setLastLegsDate, todayDate, sessionTitle}}>
 <ShouldersDaysContext.Provider value={{ daysSinceShoulders, setShouldersDays, shouldersDays, lastShouldersDate, setLastShouldersDate, todayDate, sessionTitle}}>
 <EntryContext.Provider value={{ entryOpen, setEntryOpen, closeModal }}>
-<devOrProdContext.Provider value={{ backendUrl }}>
+<devOrProdContext.Provider>
 
 <EntryModal  /> 
 {theToken ? <TheBody/> : null}

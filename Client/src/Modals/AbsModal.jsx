@@ -12,12 +12,12 @@ const AbsModal = ({ isOpen, onRequestClose }) => {
     const { sessionTitle, lastAbsDate, setAbsDays, setLastAbsDate } = absContext;
     const {theToken} = useContext(TokenContext);
     const [hasButtonBeenPressed, setHasButtonBeenPressed] = useState(false);
-    const {backendUrl} = useContext(devOrProdContext);
+   
 
 
   useEffect(() => {
     if (hasButtonBeenPressed) {
-      fetch(`${backendUrl}/abs`, {
+      fetch(`${import.meta.env.VITE_BACKEND_API_URL}/abs`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

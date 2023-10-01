@@ -29,7 +29,7 @@ function handleSubmit(event) {
 
   useEffect(() => {
     if (hasButtonBeenPressed) {
-      fetch(`${backendUrl}/back`, {
+      fetch(`${import.meta.env.VITE_BACKEND_API_URL}/back`, {
     //fetch('http://localhost:3000/back', {
     method: 'POST',
     headers: {

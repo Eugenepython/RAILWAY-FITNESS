@@ -31,7 +31,7 @@ const {backendUrl} = useContext(devOrProdContext);
 
 useEffect(() => {
     if (hasButtonBeenPressed) {
-    fetch(`${backendUrl}/legs`, {
+        fetch(`${import.meta.env.VITE_BACKEND_API_URL}/legs`, {
     //fetch('http://localhost:3000/legs', {
     method: 'POST',
     headers: {

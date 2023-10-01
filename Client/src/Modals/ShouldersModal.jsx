@@ -28,7 +28,7 @@ setShouldersDate(event.target.value);
 
 useEffect(() => {
     if (hasButtonBeenPressed) {
-    fetch(`${backendUrl}/shoulders`, {
+        fetch(`${import.meta.env.VITE_BACKEND_API_URL}/shoulders`, {
     //fetch('http://localhost:3000/shoulders', {  
     method: 'POST',
     headers: {

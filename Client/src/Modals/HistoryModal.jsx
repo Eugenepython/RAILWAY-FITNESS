@@ -22,7 +22,7 @@ const HistoryModal = ({ isOpen, onRequestClose, theUser }) => {
 
     useEffect(() => {
         //fetch('http://localhost:3000/history', {
-        fetch(`${backendUrl}/history`, {
+          fetch(`${import.meta.env.VITE_BACKEND_API_URL}/history`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

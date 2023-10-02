@@ -38,10 +38,11 @@ console.log(pool.options.user  + " is the pool options user")
 console.log(process.env.PG_PORT + " is the pg port")
 
 
+
 const sessionConfig = {
   store: new PgSession({
     pool: pool, 
-    tableName: 'session', 
+    tableName: 'sessiontable', 
   }),
   secret: 'notguilty2010',
   resave: false,
@@ -49,7 +50,14 @@ const sessionConfig = {
   cookie: { secure: false },
 };
 
-app.use(session(sessionConfig)); 
+
+
+
+
+app.use(session(sessionConfig));
+
+
+
 
 console.log(process.env.PG_USER)
 console.log(process.env.PG_HOST)
@@ -60,6 +68,19 @@ console.log(process.env.PG_PORT)
 
 const prodFrontendURL = process.env.FRONTEND_URL;
 const devFrontendURL = 'http://localhost:5173';
+
+pool.query('SELECT * FROM SESSIONTABLE', (err, result) => {
+  if (err) {
+    console.error('Error querying sessionTable:', err);
+    // Handle the error here, e.g., by logging or terminating the application
+  } else {
+    console.log('Connected to sessionTable successfully');
+    // You can also log or use the 'result' if needed
+  }
+
+});
+
+
 
 app.use(
   cors({
@@ -357,7 +378,6 @@ app.post('/register', (req, res) => {
   );
 });
 
-
 app.post('/login', (req, res) => {
   const { username, password } = req.body; //the username here is what is ncluded in the token
   const token = jwt.sign({ username }, 'notguilty2010', { expiresIn: '1h' }); 
@@ -379,13 +399,15 @@ app.post('/login', (req, res) => {
           //console.log('Database Result:', result.rows[0]);
           //console.log(result.rows[0].password)
           const storedPassword = result.rows[0].password;
+          const userId = result.rows[0].user_id;
           //console.log(password)
           //console.log(storedPassword)
           if (storedPassword === password) {
             res.status(200).json({ message: 'Login successful, you are logged in',  username : username, token : token });
             //console.log('Login successful');
-            req.session.user = { username: username };
-            //console.log(JSON.stringify(req.session.user) + ' is the session user');
+            req.session.user = { username: username, id : userId };
+            console.log('Session data after login:', req.session); 
+            console.log(JSON.stringify(req.session.user) + ' is the session user');
             //console.log(token)
           } else {
               res.status(401).json({ message: 'wrong' });
@@ -397,6 +419,9 @@ app.post('/login', (req, res) => {
   );
 });
 
+app.get('/session', (req, res) => {
+  res.json(req.session);
+});
 
 
 
@@ -405,8 +430,6 @@ app.post('/login', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-
 
 
 

@@ -11,7 +11,7 @@ const [days, setDays] = useState("");
 const backContext = useContext(BackDaysContext);
 const { sessionTitle, lastBackDate, setBackDays, setLastBackDate } = backContext;
 const [hasButtonBeenPressed, setHasButtonBeenPressed] = useState(false);
-const {backendUrl} = useContext(devOrProdContext);
+
 
 function handleSubmit(event) {
     event.preventDefault();

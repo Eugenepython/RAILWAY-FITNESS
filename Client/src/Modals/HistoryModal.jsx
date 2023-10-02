@@ -18,7 +18,7 @@ const HistoryModal = ({ isOpen, onRequestClose, theUser }) => {
     console.log(theUser + 'is the user in HistoryModal.jsx')
     const [history, setHistory] = useState([])
 
-    const {backendUrl} = useContext(devOrProdContext);
+
 
     useEffect(() => {
         //fetch('http://localhost:3000/history', {

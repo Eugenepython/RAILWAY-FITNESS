@@ -12,7 +12,6 @@ const [days, setDays] = useState("");
 const chestContext = useContext(ChestDaysContext);
 const { sessionTitle, lastChestDate, setChestDays, setLastChestDate } = chestContext;
 const [hasButtonBeenPressed, setHasButtonBeenPressed] = useState(false);
-const {backendUrl} = useContext(devOrProdContext);
 
 
 function handleSubmit(event) {

@@ -12,8 +12,7 @@ const [days, setDays] = useState("");
 const legsContext = useContext(LegsDaysContext);
 const { sessionTitle, lastLegsDate, setLegsDays, setLastLegsDate } = legsContext;
 const [hasButtonBeenPressed, setHasButtonBeenPressed] = useState(false);
-const {backendUrl} = useContext(devOrProdContext);
-        //console.log(legsContext)
+
 
 
     function handleSubmit(event) {

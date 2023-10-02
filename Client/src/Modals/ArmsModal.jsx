@@ -11,7 +11,7 @@ const [days, setDays] = useState("");
 const [hasButtonBeenPressed, setHasButtonBeenPressed] = useState(false);
 const armsContext = useContext(ArmsDaysContext);
 const { sessionTitle, lastArmsDate, setArmsDays, setLastArmsDate } = armsContext;
-const {backendUrl} = useContext(devOrProdContext);
+
 
 function handleSubmit(event) {
     event.preventDefault();

@@ -10,7 +10,7 @@ const [value, setValue] = useState("");
 const [days, setDays] = useState(""); 
 const shouldersContext = useContext(ShouldersDaysContext);
 const { sessionTitle, lastShouldersDate, setShouldersDays, setLastShouldersDate } = shouldersContext;
-const {backendUrl} = useContext(devOrProdContext);
+
 const [hasButtonBeenPressed, setHasButtonBeenPressed] = useState(false);
 
 function handleSubmit(event) {

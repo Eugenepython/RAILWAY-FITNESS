@@ -30,6 +30,12 @@ const pool = new Pool({
 });
 
 console.log(process.env.NODE_ENV + " is the node environment")
+console.log(process.env.DB_USER)
+console.log(process.env.DB_HOST)
+console.log(process.env.DB_NAME)
+console.log(process.env.DB_PASSWORD)
+console.log(pool.options.user)
+console.log(process.env.DB_PORT)
 
 
 const sessionConfig = {

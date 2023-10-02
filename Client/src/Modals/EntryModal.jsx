@@ -11,7 +11,7 @@ const [signinOpen, setSigninOpen] = useState(false);
 const {sessionTitle, setSessionTitle} = useContext(UserNameContext);
 const {theToken, setTheToken} = useContext(TokenContext);
 const {entryOpen, setEntryOpen} = useContext(EntryContext);
-const {backendUrl} = useContext(devOrProdContext);
+
 
 
 const initialSignInData = {

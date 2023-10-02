@@ -143,12 +143,12 @@ shouldersArray.length > 0 ? setLastShouldersDate(getDate(shouldersArray[shoulder
 <LegsDaysContext.Provider value={{ daysSinceLegs, setLegsDays, legsDays, lastLegsDate, setLastLegsDate, todayDate, sessionTitle}}>
 <ShouldersDaysContext.Provider value={{ daysSinceShoulders, setShouldersDays, shouldersDays, lastShouldersDate, setLastShouldersDate, todayDate, sessionTitle}}>
 <EntryContext.Provider value={{ entryOpen, setEntryOpen, closeModal }}>
-<devOrProdContext.Provider>
+
 
 <EntryModal  /> 
 {theToken ? <TheBody/> : null}
 
-</devOrProdContext.Provider>
+
 </EntryContext.Provider>
 </ShouldersDaysContext.Provider>
 </LegsDaysContext.Provider>

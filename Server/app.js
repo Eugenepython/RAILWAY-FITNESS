@@ -22,20 +22,20 @@ app.use(express.json());
 app.use(cookieParser());
 
 const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
+  user: process.env.PG_USER,
+  host: process.env.PG_HOST,
+  database: process.env.PG_NAME,
+  password: process.env.PG_PASSWORD,
+  port: process.env.PG_PORT,
 });
 
 console.log(process.env.NODE_ENV + " is the node environment")
-console.log(process.env.DB_USER)
-console.log(process.env.DB_HOST)
-console.log(process.env.DB_NAME)
-console.log(process.env.DB_PASSWORD)
+console.log(process.env.PG_USER)
+console.log(process.env.PG_HOST)
+console.log(process.env.PG_NAME)
+console.log(process.env.PG_PASSWORD)
 console.log(pool.options.user)
-console.log(process.env.DB_PORT)
+console.log(process.env.PG_PORT)
 
 
 const sessionConfig = {
@@ -51,12 +51,12 @@ const sessionConfig = {
 
 app.use(session(sessionConfig)); 
 
-console.log(process.env.DB_USER)
-console.log(process.env.DB_HOST)
-console.log(process.env.DB_NAME)
-console.log(process.env.DB_PASSWORD)
+console.log(process.env.PG_USER)
+console.log(process.env.PG_HOST)
+console.log(process.env.PG_NAME)
+console.log(process.env.PG_PASSWORD)
 console.log(pool.options.user)
-console.log(process.env.DB_PORT)
+console.log(process.env.PG_PORT)
 
 const prodFrontendURL = process.env.FRONTEND_URL;
 const devFrontendURL = 'http://localhost:5173';

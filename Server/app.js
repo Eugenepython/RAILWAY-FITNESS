@@ -30,12 +30,12 @@ const pool = new Pool({
 });
 
 console.log(process.env.NODE_ENV + " is the node environment")
-console.log(process.env.PG_USER)
-console.log(process.env.PG_HOST)
-console.log(process.env.PG_NAME)
-console.log(process.env.PG_PASSWORD)
-console.log(pool.options.user)
-console.log(process.env.PG_PORT)
+console.log(process.env.PG_USER + " is the pg user")
+console.log(process.env.PG_HOST + " is the pg host")
+console.log(process.env.PG_NAME + " is the pg name")
+console.log(process.env.PG_PASSWORD + " is the pg password")
+console.log(pool.options.user  + " is the pool options user")
+console.log(process.env.PG_PORT + " is the pg port")
 
 
 const sessionConfig = {

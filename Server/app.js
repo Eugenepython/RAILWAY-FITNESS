@@ -378,6 +378,25 @@ app.post('/register', (req, res) => {
   );
 });
 
+app.post('/logout', (req, res) => {
+  const { sessionTitle } = req.body;
+  req.session.destroy((problem) => {
+    if (problem) {
+      console.error('Error destroying session:', problem);
+      res.status(500).send('Error logging out');
+    } else {
+      console.log(`Session of ${sessionTitle} destroyed successfully`);
+    }
+  });
+ 
+  
+  
+  
+  
+  });
+
+
+
 app.post('/login', (req, res) => {
   const { username, password } = req.body; //the username here is what is ncluded in the token
   const token = jwt.sign({ username }, 'notguilty2010', { expiresIn: '1h' }); 

@@ -78,12 +78,29 @@ function TheBody() {
 
       //console.log(theToken + ' theToken')
 
-      function logOut() {
-        setEntryOpen(true)
-      setTheToken('')
-        console.log("logout")
-      }
-  
+  function logOut() {
+    setEntryOpen(true)
+  setTheToken('')
+    console.log("logout")
+    fetch(`${import.meta.env.VITE_BACKEND_API_URL}/logout`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({sessionTitle}),
+      })
+      .then((response) => {
+      return response.json();
+      })
+      .then((data) => {
+      console.log('Response from backend:', data);
+      })
+      .catch((error) => {
+      console.error('Error:', error);
+      });
+    // i need to fetch a backend url called 'logout and use it to cancel the session
+  }
+
 
 
     return (

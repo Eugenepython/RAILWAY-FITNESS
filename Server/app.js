@@ -72,14 +72,19 @@ const devFrontendURL = 'http://localhost:5173';
 pool.query('SELECT * FROM SESSIONTABLE', (err, result) => {
   if (err) {
     console.error('Error querying sessionTable:', err);
-    // Handle the error here, e.g., by logging or terminating the application
   } else {
     console.log('Connected to sessionTable successfully');
-    // You can also log or use the 'result' if needed
   }
-
 });
 
+
+pool.query('SELECT * FROM users', (err, result) => {
+  if (err) {
+    console.error('Error querying users:', err);
+  } else {
+    console.log('Connected to users successfully');
+  }
+})
 
 
 app.use(
@@ -389,10 +394,6 @@ app.post('/logout', (req, res) => {
     }
   });
  
-  
-  
-  
-  
   });
 
 

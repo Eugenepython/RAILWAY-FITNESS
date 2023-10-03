@@ -317,7 +317,8 @@ input[type="date"]:focus {
   bottom: 0; 
   left: 0; 
   right: 0; 
-  background: url('../public/modalPics/titleImage.png') no-repeat center center / cover;
+  //background: url('../public/modalPics/titleImage.png') no-repeat center center / cover;
+  background: url('../public/modalPics/shoulderworkout.jpg') no-repeat center center / cover;
   display: flex; 
   justify-content: center; 
   align-items: center; 

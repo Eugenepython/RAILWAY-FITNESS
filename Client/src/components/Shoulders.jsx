@@ -37,7 +37,8 @@ const theStyle = {opacity: shouldersOpacity}
       <div >
             <img
             className="image-layer"
-          src='./public/images/shoulders.png'
+          //src='./public/images/shoulders.png'
+          src="https://api.xylex.ai/cdn/image/VIENNA_shoulders.png"
           alt="Shoulder Overlay"
           style = {theStyle}
         />

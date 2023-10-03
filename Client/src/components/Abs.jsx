@@ -38,7 +38,8 @@ useEffect(() => {
       <div>
             <img
             className = "image-layer"
-          src= './public/images/abs.png'
+          //src= './public/images/abs.png'
+          src="https://api.xylex.ai/cdn/image/VIENNA_abs.png"
           alt="Abs Overlay"
           style = {theStyle}
         />

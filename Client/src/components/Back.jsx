@@ -34,7 +34,8 @@ const Back = ({}) => {
       <div >
             <img
             className="image-layer"
-          src='./public/images/back.png'
+          //src='./public/images/back.png'
+          src="https://api.xylex.ai/cdn/image/VIENNA_back.png"
           alt="Back Overlay"
           style = {theStyle}
 

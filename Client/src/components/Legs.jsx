@@ -37,13 +37,17 @@ const Legs = ({}) => {
       <div >
             <img
             className="image-layer"
-          src='./public/images/legsworkout.png'
+          src='./public/images/legs.png'
           alt="Legs Overlay"
           style = {theStyle}
         />
+        <img src = './public/modalpics/legsworkout.png' alt = "Legs" />
        </div>
     );
   };
+
+
+  
 
 
 

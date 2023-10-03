@@ -35,7 +35,6 @@ const Legs = ({}) => {
 
     return (
       <div >
-        <p>there are supposed to be legs here!</p>
             <img
             className="image-layer"
           //src='./public/images/legs.png'

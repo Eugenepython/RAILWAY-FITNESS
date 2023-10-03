@@ -132,7 +132,7 @@ body {
 }
 
 .legs-modal {
-  background: url('../public/modalPics/legsworkout.jpg') no-repeat center center / cover;
+  background: url('../public/modalPics/legsworkout.png') no-repeat center center / cover;
   color: blue;
   height: 100vh;
   font-size: 36px;

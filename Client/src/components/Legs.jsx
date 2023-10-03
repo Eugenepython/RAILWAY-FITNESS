@@ -37,11 +37,12 @@ const Legs = ({}) => {
       <div >
             <img
             className="image-layer"
-          src='./public/images/legs.png'
+          //src='./public/images/legs.png'
+          src="https://api.xylex.ai/cdn/image/VIENNA_legs.png"
           alt="Legs Overlay"
           style = {theStyle}
         />
-        <img src = './public/modalpics/legsworkout.png' alt = "Legs" />
+   
        </div>
     );
   };

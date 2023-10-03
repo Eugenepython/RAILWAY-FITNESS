@@ -37,7 +37,7 @@ const Legs = ({}) => {
       <div >
             <img
             className="image-layer"
-          src='./public/images/legs.png'
+          src='./public/images/legsworkout.png'
           alt="Legs Overlay"
           style = {theStyle}
         />

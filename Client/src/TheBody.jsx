@@ -14,7 +14,7 @@ import LegsModal from './Modals/LegsModal'
 import ShouldersModal from './Modals/ShouldersModal'
 import HistoryModal from './Modals/HistoryModal'
 import { useState, useContext } from 'react';
-import { UserNameContext, TokenContext, EntryContext } from "./Contexts/Context";
+import { UserNameContext, TokenContext, EntryContext, HistoryContext } from "./Contexts/Context";
 
 
 function TheBody() {
@@ -27,43 +27,66 @@ function TheBody() {
   const {sessionTitle, setSessionTitle} = useContext(UserNameContext);
   const {theToken, setTheToken} = useContext(TokenContext);
   const {entryOpen, setEntryOpen} = useContext(EntryContext);
-  const[historyOpen, setHistoryOpen, ] = useState(false)
+  const {history, setHistory, historyLength, setHistoryLength} = useContext(HistoryContext);
+  const[historyOpen, setHistoryOpen,  ] = useState(false)
 
- 
+ //console.log(sessionTitle + ' sessionTitle in TheBody.jsx')
 
     function toggleAbs () {
         setAbsOpen(true);
-        console.log("abs")
+        //console.log("abs")
       };
 
       function toggleArms () {
         setArmsOpen(true);
-        console.log("arms")
+        //console.log("arms")
       };
 
       function toggleBack() {
         setBackOpen(true);
-        console.log("back")
+        //console.log("back")
       };
 
       function toggleChest() {
         setChestOpen(true);
-        console.log("chest")
+        //console.log("chest")
       };
 
       function toggleLegs() {
         setLegsOpen(true);
-        console.log("legs")
+        //console.log("legs")
       };
 
       function toggleShoulders() {
         setShouldersOpen(true);
-        console.log("shoulders")
+        //console.log("shoulders")
       };
 
       function getHistory() {
-        console.log("history")
         setHistoryOpen(true)
+        fetch(`${import.meta.env.VITE_BACKEND_API_URL}/history`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ sessionTitle }),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then((data) => {
+            //console.log('Response from backend:', data);
+            //console.log(data.answer.length + "original length")
+            setHistoryLength(data.answer.length)
+           // console.log(data.answer)
+            setHistory(data.answer)
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
       }
 
       const closeModal = () => {
@@ -81,7 +104,7 @@ function TheBody() {
   function logOut() {
     setEntryOpen(true)
   setTheToken('')
-    console.log("logout")
+    /console.log("logout")
     fetch(`${import.meta.env.VITE_BACKEND_API_URL}/logout`, {
       method: 'POST',
       headers: {
@@ -93,10 +116,10 @@ function TheBody() {
       return response.json();
       })
       .then((data) => {
-      console.log('Response from backend:', data);
+      //console.log('Response from backend:', data);
       })
       .catch((error) => {
-      console.error('Error:', error);
+      //console.error('Error:', error);
       });
     // i need to fetch a backend url called 'logout and use it to cancel the session
   }

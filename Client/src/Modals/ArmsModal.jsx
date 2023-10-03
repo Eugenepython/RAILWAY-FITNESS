@@ -22,7 +22,7 @@ function handleSubmit(event) {
     onRequestClose()
   }
  
- console.log(sessionTitle + ' is the new user')
+ //console.log(sessionTitle + ' is the new user')
  //console.log(armsDate + ' is the new  arms date')
   
 function handleInputChange(event) {
@@ -45,7 +45,7 @@ function handleInputChange(event) {
     return response.json();
     })
     .then((data) => {
-    console.log('Response from backend:', data);
+    //console.log('Response from backend:', data);
     })
     .catch((error) => {
     console.error('Error:', error);

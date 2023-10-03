@@ -12,8 +12,6 @@ const {sessionTitle, setSessionTitle} = useContext(UserNameContext);
 const {theToken, setTheToken} = useContext(TokenContext);
 const {entryOpen, setEntryOpen} = useContext(EntryContext);
 
-
-
 const initialSignInData = {
     username: '',
     password: '',
@@ -52,7 +50,6 @@ function wrongUser() {
     alert("wrong user")
 }
 
-
 function handleSubmitSignIn(event) {
   event.preventDefault();
     fetch(`${import.meta.env.VITE_BACKEND_API_URL}/login`, {
@@ -85,8 +82,8 @@ function handleSubmitSignIn(event) {
 
 function handleSubmitSignUp(event){
     event.preventDefault();
-    if (firstNewPass === secondNewPass){
-        console.log("they match up!!!!!!!")
+    if (firstNewPass === secondNewPass && signUpData.newUserName.length > 6){
+        //console.log("they match up!!!!!!!")
         const registrationData = {
             username: signUpData.newUserName, // Use newUserName as email
             password: firstNewPass,        // Use the first password as password
@@ -100,7 +97,7 @@ function handleSubmitSignUp(event){
         })
               .then(response => {
         if (response.status === 201) {
-          console.log('User registered successfully!');
+          //console.log('User registered successfully!');
           setSignUp(false)
           setShowWelcomeNewUser(true)
         } else {
@@ -113,7 +110,7 @@ function handleSubmitSignUp(event){
       });
   }
   else {
-      alert("passwords don't match")
+      alert("passwords don't match, or username is too short")
   }
   
 }  
@@ -149,7 +146,7 @@ function handleNewUserChange(event) {
         <>
         <Modal
             isOpen={entryOpen}
-            onRequestClose={closeModal} // Use the correct function name here
+            onRequestClose={closeModal} 
             className='entry-modal'
         >
             <div>
@@ -160,7 +157,7 @@ function handleNewUserChange(event) {
             <div className = 'logIn' style={{ display: loginOpen ? 'block' : 'none' }}>
         <form onSubmit={handleSubmitSignIn}>
         
-          <div>
+          <div className ='showUserandPassInputs'>
             <label htmlFor="username">Username:</label>
             <input
               type="text"
@@ -171,7 +168,7 @@ function handleNewUserChange(event) {
             />
           </div>
 
-          <div>
+          <div className ='showUserandPassInputs'>
             <label htmlFor="password">Password:</label>
             <input
               type="password"
@@ -191,6 +188,7 @@ function handleNewUserChange(event) {
         <div className = 'signUp' style={{ display: signUp ? 'block' : 'none' }}>
         <form onSubmit={handleSubmitSignUp}>
           <div>
+          <p className = 'newUserNameguidance'>Username must be at least 6 characters</p>
             <label htmlFor="username">Your new username</label>
             <input
               type="text"
@@ -225,8 +223,9 @@ function handleNewUserChange(event) {
           <button type="submit" className = "login-buttons">Sign Up</button>
          
         </form>
-        </div>
         
+        </div>
+        <div className = 'titleImage'></div>
         </Modal>
         </>
     );

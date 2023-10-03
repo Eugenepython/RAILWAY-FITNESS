@@ -10,47 +10,23 @@ function getDate(input){
     const formattedDate = `${year}-${month}-${day}`;
     return formattedDate
     }
-    
+
 
 
 const HistoryModal = ({ isOpen, onRequestClose, theUser }) => {
 
-    console.log(theUser + 'is the user in HistoryModal.jsx')
-    const [history, setHistory] = useState([])
+    //console.log(theUser + ' is the user in HistoryModal.jsx')
+
+const {history, setHistory, historyLength, setHistoryLength} = useContext(HistoryContext);
 
 
+ 
+console.log(historyLength)
 
-    useEffect(() => {
-        //fetch('http://localhost:3000/history', {
-          fetch(`${import.meta.env.VITE_BACKEND_API_URL}/history`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ theUser }),
-          })
-            .then((response) => {
-              if (!response.ok) {
-                throw new Error('Network response was not ok');
-              }
-              return response.json();
-            })
-            .then((data) => {
-              //console.log('Response from backend:', data);
-              //console.log(data.answer)
-            setHistory(data.answer)
-            })
-            .catch((error) => {
-              console.error('Error:', error);
-            });
-          
-      }, []); 
-
-console.log(history)
 
 const displayHistory = history.map((item) => {
     let theDate = getDate(item.workoutDate)
-    console.log(theDate)
+    //console.log(theDate)
     return (
         <div className = 'history-item'>
             <p>{item.workoutType}    -   {theDate}</p>
@@ -65,15 +41,11 @@ const displayHistory = history.map((item) => {
             onRequestClose={onRequestClose} 
             className='history-modal'
             contentLabel="Custom Modal"
-
         >
             <div>
-                <h1>History</h1>
+                <h1 className = 'historyTitleName'>History</h1>
                 <button  className = 'modal-button' onClick={onRequestClose}>Close</button>
              <div className = 'history-modal'>{displayHistory}</div>
-
-             
-
         </div>
         
         </Modal>

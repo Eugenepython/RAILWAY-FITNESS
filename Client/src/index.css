@@ -208,6 +208,7 @@ input[type="date"]:focus {
   padding: 15px 30px;
   margin-top: 20px;
   margin-bottom: 20px;
+  margin-left: 15px;
   background-color: #4CAF50; 
   color: #fff; 
   font-size: 18px;
@@ -226,6 +227,8 @@ input[type="date"]:focus {
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
+  margin-left: 35px;
+  margin-top: 60px;
 }
 
 .title {
@@ -236,6 +239,10 @@ input[type="date"]:focus {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   color: #ff5500;
   text-align: center;
+}
+
+.showUserandPassInputs {
+  margin-left: 15px;
 }
 
 .logout-button{
@@ -251,8 +258,6 @@ input[type="date"]:focus {
   position: absolute;
   right: 10px; 
   margin: 3px;
-
-
 }
 
 .history-button {
@@ -287,4 +292,33 @@ input[type="date"]:focus {
   font-size: 16px;
   font-weight: bold;
   width : 35%;
+}
+
+.historyTitleName {
+  font-size: 32px; 
+  font-weight: bold; 
+  color: #333; 
+  text-align: center;
+}
+
+.newUserNameguidance{
+  font-size: 16px; 
+  font-weight: bold; 
+  color: #333; 
+  
+}
+
+.titleImage {
+  height: 300px;
+  width: 300px;
+  margin: auto; 
+  position: absolute;
+  top: 0; 
+  bottom: 0; 
+  left: 0; 
+  right: 0; 
+  background: url('../public/modalPics/titleImage.png') no-repeat center center / cover;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
 }

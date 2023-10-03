@@ -41,7 +41,7 @@ useEffect(() => {
     return response.json();
     })
     .then((data) => {
-    console.log('Response from backend:', data);
+    //console.log('Response from backend:', data);
     })
     .catch((error) => {
     console.error('Error:', error);

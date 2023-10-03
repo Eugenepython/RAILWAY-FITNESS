@@ -66,8 +66,9 @@ function App() {
   const [shouldersDays, setShouldersDays] = useState(daysSinceShoulders)
 
 const [sessionTitle, setSessionTitle] = useState('')
-
+const [history, setHistory] = useState([])
 const [theToken, setTheToken] = useState('')  
+const [historyLength, setHistoryLength] = useState(0)
 
 
 useEffect(() => {
@@ -128,7 +129,7 @@ shouldersArray.length > 0 ? setLastShouldersDate(getDate(shouldersArray[shoulder
 
 
 
- console.log(sessionTitle + ' sessionTitle')
+ //console.log(sessionTitle + ' sessionTitle')
   return (
     <>
       <div>
@@ -143,12 +144,13 @@ shouldersArray.length > 0 ? setLastShouldersDate(getDate(shouldersArray[shoulder
 <LegsDaysContext.Provider value={{ daysSinceLegs, setLegsDays, legsDays, lastLegsDate, setLastLegsDate, todayDate, sessionTitle}}>
 <ShouldersDaysContext.Provider value={{ daysSinceShoulders, setShouldersDays, shouldersDays, lastShouldersDate, setLastShouldersDate, todayDate, sessionTitle}}>
 <EntryContext.Provider value={{ entryOpen, setEntryOpen, closeModal }}>
+<HistoryContext.Provider value={{ history, setHistory, historyLength, setHistoryLength }}>
 
 
 <EntryModal  /> 
 {theToken ? <TheBody/> : null}
 
-
+</HistoryContext.Provider>
 </EntryContext.Provider>
 </ShouldersDaysContext.Provider>
 </LegsDaysContext.Provider>

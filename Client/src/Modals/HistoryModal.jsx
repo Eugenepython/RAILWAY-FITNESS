@@ -28,7 +28,7 @@ const displayHistory = history.map((item) => {
     const inputDate = theDate;
     const formattedDate = formatDate(inputDate);
     return (
-        <div className = 'history-item'>
+        <div className = 'history-item' key={item.id}>
             <p>{item.workoutType}    -   {formattedDate}</p>
             </div>
     )
@@ -41,6 +41,17 @@ const displayHistory = history.map((item) => {
             onRequestClose={onRequestClose} 
             className='history-modal'
             contentLabel="Custom Modal"
+            style={{
+                overlay: {
+                  zIndex: 9999, 
+                },
+                content: {
+                  maxWidth: '100%', 
+                  margin: 'auto',
+                  overflowY: 'auto', 
+                  maxHeight: '80vh',
+                },
+              }}
         >
             <div>
                 <h1 className = 'historyTitleName'>History</h1>

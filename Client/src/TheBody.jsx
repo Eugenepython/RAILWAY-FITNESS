@@ -127,11 +127,10 @@ function TheBody() {
 
     return (
       <>
-      <div >
      
       <div className='buttons-and-body'>
       <div className = 'title'>
-          <h className = 'userTitle'>{sessionTitle}</h>
+          <h1 className = 'userTitle'>{sessionTitle}</h1>
           <button className = 'logout-button' onClick={() => logOut()}>Logout</button>
 
         </div>
@@ -170,7 +169,8 @@ function TheBody() {
   
         
         </div>
-        </div>
+      
+        
         <div className = "history-button-holder">
         <button className = 'historyButton' onClick={() => getHistory()}>GET YOUR WORKOUT HISTORY</button>
         </div>
@@ -181,4 +181,3 @@ function TheBody() {
 export default TheBody;
 
 
-// <button className="history-button" onClick={() => getHistory()}><p>Workout</p> <p>History</p></button>

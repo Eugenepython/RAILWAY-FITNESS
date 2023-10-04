@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Modal from 'react-modal';
 import { ShouldersDaysContext, devOrProdContext  } from "../Contexts/Context";
-import {convertToCompatibleDateFormat, calculateDateDifferenceInDays} from '../dataUtils';
+import {convertToCompatibleDateFormat, calculateDateDifferenceInDays, formatDate, getDaySuffix} from '../dataUtils';
 
 const ShouldersModal = ({ isOpen, onRequestClose }) => {
         
@@ -12,6 +12,9 @@ const shouldersContext = useContext(ShouldersDaysContext);
 const { sessionTitle, lastShouldersDate, setShouldersDays, setLastShouldersDate } = shouldersContext;
 
 const [hasButtonBeenPressed, setHasButtonBeenPressed] = useState(false);
+const inputDate = lastShouldersDate;
+const formattedDate = formatDate(inputDate);
+
 
 function handleSubmit(event) {
 event.preventDefault();
@@ -62,25 +65,33 @@ useEffect(() => {
                     contentLabel="Custom Modal"
                 >
                     <div className="text-container">
-                    <p>You last worked on your shoulders on {lastShouldersDate}</p>
+                    <p>You last worked on your shoulders on {formattedDate}</p>
                     <p>have your worked on shoulders since If so enter the date</p>
                     </div>
-                    <div className = 'input-container'>
-                    <form onSubmit = {handleSubmit}>
-                    <label>
-                Input your answer:
-                <input
-                    type="date"
-                    placeholder = "have your worked on shoulders today? If so enter the date"
-                    //value={value}
-                    onChange={handleInputChange}
-                />
-                </label>
-                <button className = 'modal-button' type="submit">Submit</button>
-                
-                </form>
-                <button className = 'modal-button' onClick={onRequestClose}>Close</button>
-                </div>
+
+
+                    <div >
+
+<form 
+className = 'input-container' 
+onSubmit = {handleSubmit}>
+<label>
+<input
+type="date"
+className="input-date input-bigger" 
+style={{ fontSize: '60px', width: '600px', 'height': '100px' }} 
+
+onChange={handleInputChange}
+/>
+</label>
+<button  className = 'submitDate' type="submit">Submit</button>
+</form>
+
+</div>
+
+<div className = 'closeButtonContainer'>
+        <button className = 'closeModal' onClick={onRequestClose}>Close</button>
+        </div>
                 </Modal>
             );
             };

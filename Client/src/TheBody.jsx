@@ -104,7 +104,7 @@ function TheBody() {
   function logOut() {
     setEntryOpen(true)
   setTheToken('')
-    /console.log("logout")
+    //console.log("logout")
     fetch(`${import.meta.env.VITE_BACKEND_API_URL}/logout`, {
       method: 'POST',
       headers: {
@@ -125,20 +125,22 @@ function TheBody() {
   }
 
 
-
     return (
       <>
-      <div className = 'whole'>
-        <div className = 'title'>{sessionTitle}
-        <button className = 'logout-button' onClick={() => logOut()}>Logout</button>
+      <div >
+     
+      <div className='buttons-and-body'>
+      <div className = 'title'>
+          <h className = 'userTitle'>{sessionTitle}</h>
+          <button className = 'logout-button' onClick={() => logOut()}>Logout</button>
+
         </div>
         
-      <div className='buttons-and-body'>
-      <div className = 'left-buttons'>
+      <div className = 'top-buttons'>
         <button className="fitness-button" onClick={() => toggleAbs()}>Abs</button>
         <button className="fitness-button" onClick={() => toggleArms()}>Arms</button>
         <button className="fitness-button" onClick={() => toggleBack()}>Back</button>
-        <button className="history-button" onClick={() => getHistory()}><p>Workout</p> <p>History</p></button>
+       
       <AbsModal isOpen={absOpen} onRequestClose={closeModal} />
       <ArmsModal isOpen={armsOpen} onRequestClose={closeModal} />
       <BackModal isOpen={backOpen} onRequestClose={closeModal} />
@@ -159,15 +161,24 @@ function TheBody() {
             </div>
          
             
-     <div className = 'right-buttons'>
+     <div className = 'bottom-buttons'>
      <button className="fitness-button" onClick={() => toggleChest()}>Chest</button>
         <button className="fitness-button" onClick={() => toggleLegs()}>Legs</button>
         <button className="fitness-button" onClick={() => toggleShoulders()}>Shoulders</button>
         </div>
+     
+  
+        
         </div>
+        </div>
+        <div className = "history-button-holder">
+        <button className = 'historyButton' onClick={() => getHistory()}>GET YOUR WORKOUT HISTORY</button>
         </div>
         </>
     )
 }
 
 export default TheBody;
+
+
+// <button className="history-button" onClick={() => getHistory()}><p>Workout</p> <p>History</p></button>

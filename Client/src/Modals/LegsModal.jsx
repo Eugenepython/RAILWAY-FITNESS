@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Modal from 'react-modal';
 import { LegsDaysContext, devOrProdContext  } from "../Contexts/Context";
-import {convertToCompatibleDateFormat, calculateDateDifferenceInDays} from '../dataUtils';
+import {convertToCompatibleDateFormat, calculateDateDifferenceInDays, formatDate, getDaySuffix} from '../dataUtils';
 
 
 const LegsModal = ({ isOpen, onRequestClose }) => {
@@ -12,6 +12,8 @@ const [days, setDays] = useState("");
 const legsContext = useContext(LegsDaysContext);
 const { sessionTitle, lastLegsDate, setLegsDays, setLastLegsDate } = legsContext;
 const [hasButtonBeenPressed, setHasButtonBeenPressed] = useState(false);
+const inputDate = lastLegsDate;
+const formattedDate = formatDate(inputDate);
 
 
 
@@ -61,24 +63,48 @@ useEffect(() => {
                 contentLabel="Custom Modal"
             >
                 <div className="text-container">
-                <p>You last worked on your legs on {legsContext.lastLegsDate}.</p>
+                <p>You last worked on your legs on {formattedDate}.</p>
                 <p>Have your worked on legs since? If so enter the date</p>
                 </div>
-                <div className = 'input-container'>
-                <form onSubmit = {handleSubmit}>
-                <label>
-       
-            <input
-                type="date"
-                placeholder = "have your worked on legs today? If so enter the date"
-                //value={value}
-                onChange={handleInputChange}
-            />
-            </label>
-            <button  className = 'modal-button' type="submit">Submit</button>
-            </form>
-            <button  className = 'modal-button' onClick={onRequestClose}>Close</button>
-            </div>
+
+
+                <div >
+
+<form 
+className = 'input-container' 
+onSubmit = {handleSubmit}>
+<label>
+<input
+type="date"
+className="input-date input-bigger" 
+style={{ fontSize: '60px', width: '600px', 'height': '100px' }} 
+
+onChange={handleInputChange}
+/>
+</label>
+<button  className = 'submitDate' type="submit">Submit</button>
+</form>
+
+</div>
+
+<div className = 'closeButtonContainer'>
+        <button className = 'closeModal' onClick={onRequestClose}>Close</button>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </Modal>
         );
         };

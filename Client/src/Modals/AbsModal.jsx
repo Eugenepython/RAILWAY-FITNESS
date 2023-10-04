@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Modal from 'react-modal';
 import { AbsDaysContext, TokenContext, devOrProdContext } from "../Contexts/Context";
-import {convertToCompatibleDateFormat, calculateDateDifferenceInDays} from '../dataUtils';
+import {convertToCompatibleDateFormat, calculateDateDifferenceInDays, formatDate, getDaySuffix} from '../dataUtils';
 
 const AbsModal = ({ isOpen, onRequestClose }) => {
     
@@ -13,7 +13,9 @@ const AbsModal = ({ isOpen, onRequestClose }) => {
     const {theToken} = useContext(TokenContext);
     const [hasButtonBeenPressed, setHasButtonBeenPressed] = useState(false);
    
-
+    const inputDate = lastAbsDate;
+    const formattedDate = formatDate(inputDate);
+    
 
   useEffect(() => {
     if (hasButtonBeenPressed) {
@@ -67,23 +69,33 @@ function handleSubmit(event) {
           contentLabel="Custom Modal"
         >
           <div className="text-container">
-          <p>You last worked on your abdomen on {lastAbsDate} </p>
+          <p>You last worked on your abdomen on {formattedDate} </p>
           <p>Have your worked on abs since? If so enter the date</p>
           </div>
-          <div className = 'input-container'>
-          <form onSubmit = {handleSubmit}>
+
+
+          <div >
+
+          <form 
+          className = 'input-container' 
+          onSubmit = {handleSubmit}>
           <label>
-      
-        <input 
-            type="date"
-            placeholder = "have your worked on abs today? If so enter the date" 
-            //value={value} 
-            onChange={handleInputChange} 
-        />
-      </label>
-      <button className = 'modal-button' type="submit">Submit</button>
-      </form>
-          <button className = 'modal-button' onClick={onRequestClose}>Close</button>
+          <input
+          type="date"
+          className="input-date input-bigger" 
+          style={{ fontSize: '60px', width: '600px', 'height': '100px' }} 
+
+          onChange={handleInputChange}
+          />
+        </label>
+        <button  className = 'submitDate' type="submit">Submit</button>
+        </form>
+
+        </div>
+
+
+        <div className = 'closeButtonContainer'>
+          <button className = 'closeModal' onClick={onRequestClose}>Close</button>
           </div>
         </Modal>
       );

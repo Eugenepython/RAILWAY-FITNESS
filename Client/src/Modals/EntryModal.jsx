@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Modal from 'react-modal';
+import {convertToCompatibleDateFormat, calculateDateDifferenceInDays, formatDate, getDaySuffix} from '../dataUtils';
 
 import { UserNameContext, TokenContext, EntryContext, devOrProdContext  } from "../Contexts/Context";
 
@@ -150,8 +151,8 @@ function handleNewUserChange(event) {
             className='entry-modal'
         >
             <div>
-                <button className='modal-button' onClick={revealSignIn}>Log In</button>
-                <button className='modal-button' onClick={revealSignUp}>Sign Up</button>
+                <button className='entryButton' onClick={revealSignIn}>Log In</button>
+                <button className='entryButton' onClick={revealSignUp}>Sign Up</button>
             </div>
             <p className = 'welcomeNewUser' style={{ display: showWelcomeNewUser ? 'block' : 'none' }}>Welcome new member {signUpData.newUserName} log in with your username and password</p>
             <div className = 'logIn' style={{ display: loginOpen ? 'block' : 'none' }}>
@@ -160,6 +161,7 @@ function handleNewUserChange(event) {
           <div className ='showUserandPassInputs'>
             <label htmlFor="username">Username:</label>
             <input
+              className = 'styleInput'
               type="text"
               id="username"
               name="username"
@@ -171,6 +173,7 @@ function handleNewUserChange(event) {
           <div className ='showUserandPassInputs'>
             <label htmlFor="password">Password:</label>
             <input
+              className = 'styleInput'
               type="password"
               id="password"
               name="password"
@@ -179,18 +182,19 @@ function handleNewUserChange(event) {
             />
           </div>
 
-          <button type="submit" className = 'login-buttons'>Login</button>
+          <button type="submit" className = 'login-buttons'>Enter</button>
 
         </form>
         </div>
  
         
-        <div className = 'signUp' style={{ display: signUp ? 'block' : 'none' }}>
+        <div className = 'showUserandPassInputs' style={{ display: signUp ? 'block' : 'none' }}>
         <form onSubmit={handleSubmitSignUp}>
           <div>
           <p className = 'newUserNameguidance'>Username must be at least 6 characters</p>
             <label htmlFor="username">Your new username</label>
             <input
+              className = 'styleInput'
               type="text"
               id="newUsername"
               name="newUserName"
@@ -198,9 +202,11 @@ function handleNewUserChange(event) {
               onChange={handleNewUserChange}
             />
           </div>
+          <br></br>
           <div>
             <label htmlFor="password">Password:</label>
             <input
+              className = 'styleInput'
               type="password"
               id="newUserPassword"
               name="newUserPassword"
@@ -208,10 +214,12 @@ function handleNewUserChange(event) {
               onChange={handleNewUserChange}
             />
           </div>
+          <br></br>
 
           <div>
             <label htmlFor="password">Repeat Password:</label>
             <input
+            className = 'styleInput'
               type="password"
               id="repeatNewUserPassword"
               name="repeatNewUserPassword"

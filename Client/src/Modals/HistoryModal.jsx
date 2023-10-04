@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Modal from 'react-modal';
 import { HistoryContext, devOrProdContext  } from "../Contexts/Context";
+import {convertToCompatibleDateFormat, calculateDateDifferenceInDays, formatDate, getDaySuffix} from '../dataUtils';
 
 function getDate(input){
     const date = new Date(input)
@@ -21,15 +22,14 @@ const {history, setHistory, historyLength, setHistoryLength} = useContext(Histor
 
 
  
-console.log(historyLength)
-
 
 const displayHistory = history.map((item) => {
     let theDate = getDate(item.workoutDate)
-    //console.log(theDate)
+    const inputDate = theDate;
+    const formattedDate = formatDate(inputDate);
     return (
         <div className = 'history-item'>
-            <p>{item.workoutType}    -   {theDate}</p>
+            <p>{item.workoutType}    -   {formattedDate}</p>
             </div>
     )
 })
@@ -44,7 +44,7 @@ const displayHistory = history.map((item) => {
         >
             <div>
                 <h1 className = 'historyTitleName'>History</h1>
-                <button  className = 'modal-button' onClick={onRequestClose}>Close</button>
+                <button  className = 'closeHistory' onClick={onRequestClose}>Close</button>
              <div className = 'history-modal'>{displayHistory}</div>
         </div>
         

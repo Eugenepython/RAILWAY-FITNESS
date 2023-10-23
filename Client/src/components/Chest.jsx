@@ -37,7 +37,8 @@ const Chest = ({}) => {
             <img
             className="image-layer"
           //src='./public/images/chest.png'
-          src="https://api.xylex.ai/cdn/image/VIENNA_chest.png"
+          //src="https://api.xylex.ai/cdn/image/VIENNA_chest.png"
+          src="https://raw.githubusercontent.com/Eugenepython/RAILWAY-FITNESS/main/chest.png"
           alt="Chest Overlay"
           style = {theStyle}
         />

@@ -126,13 +126,12 @@ function TheBody() {
 
 
     return (
-      <>
+      
+     <div>
      
-      <div className='buttons-and-body'>
-      <div className = 'title'>
+      <div className = 'toprow'>
           <h1 className = 'userTitle'>{sessionTitle}</h1>
           <button className = 'logout-button' onClick={() => logOut()}>Logout</button>
-
         </div>
         
       <div className = 'top-buttons'>
@@ -167,14 +166,14 @@ function TheBody() {
         </div>
      
   
-        
-        </div>
-      
-        
         <div className = "history-button-holder">
         <button className = 'historyButton' onClick={() => getHistory()}>GET YOUR WORKOUT HISTORY</button>
         </div>
-        </>
+        </div>
+      
+        
+       
+       
     )
 }
 

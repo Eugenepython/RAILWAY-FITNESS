@@ -233,7 +233,7 @@ function handleNewUserChange(event) {
         </form>
         
         </div>
-        <div className = 'titleImage'></div>
+        
         </Modal>
         </>
     );

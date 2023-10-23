@@ -1,0 +1,19 @@
+CREATE TABLE users (
+    user_id serial PRIMARY KEY,
+    username text,
+    password text
+);
+
+CREATE TABLE workout_history (
+    history_id serial PRIMARY KEY,
+    user_id integer REFERENCES users(user_id),
+    workout_type text,
+    last_workout_date date,
+    username text
+);
+
+CREATE TABLE sessiontable (
+    sid serial PRIMARY KEY,
+    sess text,
+    expire text
+);

@@ -38,7 +38,8 @@ const Legs = ({}) => {
             <img
             className="image-layer"
           //src='./public/images/legs.png'
-          src="https://api.xylex.ai/cdn/image/VIENNA_legs.png"
+          //src="https://api.xylex.ai/cdn/image/VIENNA_legs.png"
+          src="https://raw.githubusercontent.com/Eugenepython/RAILWAY-FITNESS/main/legs.png"
           alt="Legs Overlay"
           style = {theStyle}
         />

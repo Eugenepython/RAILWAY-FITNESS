@@ -127,7 +127,7 @@ function TheBody() {
 
     return (
       
-     <div>
+      <div className = 'wholeThing'>
      
       <div className = 'toprow'>
           <h1 className = 'userTitle'>{sessionTitle}</h1>

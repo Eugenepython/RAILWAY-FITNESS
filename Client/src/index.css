@@ -4,54 +4,81 @@
   flex-direction: column;
   //justify-content: space-between;
   width: auto;
-  border-style: dashed;
+
   //justify-content: center;
   height: 100vh;
 }
 
- 
+ .wholeThing {
+text-align: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 420px;
+    margin-top: 0;
+    margin-right:auto;
+    margin-left: auto;
+    height: 100vh;
+    position: relative;
+    border-radius: 10px;
+    position:relative;
+ }
+
+ .image-holder {
+  width: 100%;
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+}
 
 
+.image-layer {
+  position: absolute;
+  width: 100%;
+  left: 0%;
+  top: 25%;
+  bottom: 25%;
 
-
+}
 
 
 .toprow {
- 
+ position: absolute;
+ width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   background-color: rgb(207, 192, 57);
   justify-content: space-between;
   top: 0%;
+  height: 10%;
   
   
 }
 
 .userTitle {
-  margin-left: 25px;
-  font-size: 40px;
+  margin-left: 10%;
+  font-size: 2rem;
   font-weight: bold;
   font-family: 'Dancing Script', Arial, Helvetica, sans-serif;
 }
 
 .logout-button{
+  font-size: 2rem;
   background-color: grey;
   color: black;
   padding: 10px 20px;
   border-radius: 5px;
-
   border: none;
   cursor: pointer;
-  font-size: 45px;
   font-weight: bold;
-  margin-right: 65px;
+  margin-right: 5%;
 
 }
 
 
 .top-buttons {
-  padding: 5%;
+  position: absolute;
+  //padding: 5%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -59,16 +86,17 @@
   width: 100%;
   justify-content: space-between;
   top: 10%;
+  height: 10%;
 }
 
 .bottom-buttons{
-  padding: 3%;
+  //padding: 3%;
   display: flex;
   flex-direction: row;
   align-items: center;
   background-color: #ca644b;
   width: 100%;
-
+  height: 10%;
   justify-content: space-between;
   position: absolute;
   bottom: 13%;
@@ -76,23 +104,8 @@
 }
 
 
-.image-holder {
-  width: 100%;
-
-  margin-top: 10%;
-  display: flex;
-  flex-direction: column;
-
-}
 
 
-
-.image-layer {
-  position: absolute;
-  width: 100%;
-  left: 5%;
-
-}
 
 body {
   margin: 0;
@@ -104,12 +117,14 @@ body {
 
 .fitness-button {
   display: inline-block;
-  padding: 15px 30px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding: 2% 4%;
+  margin-right: 2%;
+  margin-left: 2%;
+  margin-top: 2%;
+  margin-bottom: 2%;
   background-color: #4CAF50; 
   color: #fff; 
-  font-size: 50px;
+  font-size: 1rem;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -351,7 +366,7 @@ input[type="date"]:focus {
 
 
 .history-button-holder {
-  padding: 1%;
+  //padding: 1%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -359,7 +374,7 @@ input[type="date"]:focus {
   width: 100%;
   justify-content: space-between;
   position: absolute;
-  bottom: 0px;
+  bottom: 0%;
   height: 13%;
   text-align: center;
 }
@@ -367,17 +382,18 @@ input[type="date"]:focus {
 .historyButton {
   background-color: #FF5733; /* Sporty and energetic color */
   color: white; /* White text for contrast */
-  padding: 15px 30px; /* Slightly larger padding for a bold look */
-  border-radius: 50px; /* Rounded corners for a sleek appearance */
+  padding: 4% 8%; /* Slightly larger padding for a bold look */
+  border-radius: 10%; /* Rounded corners for a sleek appearance */
   border: none;
   cursor: pointer;
-  font-size: 50px; /* A readable font size */
+  font-size: 1.5rem; /* A readable font size */
   font-weight: bold;
-  margin: 60px auto 20px; /* Centered horizontally and spaced from the top */
+  margin: 4%; /* Centered horizontally and spaced from the top */
   width: 60%;
   display: block; /* Display as a block element for centering */
   text-align: center; /* Center text horizontally */
   text-transform: uppercase; /* Uppercase text for an energetic feel */
+
 }
 
 .historyButton:hover {
@@ -442,3 +458,7 @@ background-color: #007bff;
 font-size: 50px;;
 }
 
+.bigBody {
+  background-color: pink;
+ 
+}

@@ -150,15 +150,18 @@ function handleNewUserChange(event) {
             onRequestClose={closeModal} 
             className='entry-modal'
         >
-            <div>
+           
+              <div className = 'titleEntry'><h1>Fitness App</h1></div>
+              <div className = 'entryModalContent'>
                 <button className='entryButton' onClick={revealSignIn}>Log In</button>
                 <button className='entryButton' onClick={revealSignUp}>Sign Up</button>
-            </div>
+            
+            <div className ='showUserandPassInputs'>
             <p className = 'welcomeNewUser' style={{ display: showWelcomeNewUser ? 'block' : 'none' }}>Welcome new member {signUpData.newUserName} log in with your username and password</p>
-            <div className = 'logIn' style={{ display: loginOpen ? 'block' : 'none' }}>
+            <div style={{ display: loginOpen ? 'block' : 'none' }}>
         <form onSubmit={handleSubmitSignIn}>
         
-          <div className ='showUserandPassInputs'>
+          
             <label htmlFor="username">Username:</label>
             <input
               className = 'styleInput'
@@ -168,9 +171,9 @@ function handleNewUserChange(event) {
               value={signInData.username}
               onChange={handleInputChange}
             />
-          </div>
+          
 
-          <div className ='showUserandPassInputs'>
+          
             <label htmlFor="password">Password:</label>
             <input
               className = 'styleInput'
@@ -180,13 +183,15 @@ function handleNewUserChange(event) {
               value={signInData.password}
               onChange={handleInputChange}
             />
-          </div>
+          
 
           <button type="submit" className = 'login-buttons'>Enter</button>
 
         </form>
         </div>
- 
+        </div>
+        
+
         
         <div className = 'showUserandPassInputs' style={{ display: signUp ? 'block' : 'none' }}>
         <form onSubmit={handleSubmitSignUp}>
@@ -231,9 +236,9 @@ function handleNewUserChange(event) {
           <button type="submit" className = "login-buttons">Sign Up</button>
          
         </form>
-        
         </div>
-        
+       
+        </div>
         </Modal>
         </>
     );

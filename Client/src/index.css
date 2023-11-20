@@ -1,11 +1,22 @@
 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(to bottom, 
+    rgb(207, 192, 57) 0%, rgb(207, 192, 57) 10%,   /* Yellow for the first 10% */
+    #ca644b 10%, #ca644b 20%, /* Orange for the next 10% */
+    white 20%, white 77%, /* White for the next 57% */
+    #ca644b  77%, #ca644b  87%, /* Dark gray for the next 10% */
+    rgb(83, 83, 102) 87%, rgb(83, 83, 102) 100% /* Gray for the last 13% */
+  );
+}
+
+
 .buttons-and-body {
   display: flex;
   flex-direction: column;
-  //justify-content: space-between;
   width: auto;
-
-  //justify-content: center;
   height: 100vh;
 }
 
@@ -13,7 +24,7 @@
 text-align: center;
     display: flex;
     flex-direction: column;
-    max-width: 420px;
+    max-width: 820px;
     margin-top: 0;
     margin-right:auto;
     margin-left: auto;
@@ -78,7 +89,6 @@ text-align: center;
 
 .top-buttons {
   position: absolute;
-  //padding: 5%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -90,7 +100,6 @@ text-align: center;
 }
 
 .bottom-buttons{
-  //padding: 3%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -106,13 +115,6 @@ text-align: center;
 
 
 
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
- 
-}
 
 
 .fitness-button {
@@ -266,8 +268,6 @@ input[type="date"]:focus {
   margin-left: 10%;
   margin-top: 5%;
   width: 60%;
-  //height: 30%;
-  
 }
 
 .submitDate {
@@ -366,7 +366,6 @@ input[type="date"]:focus {
 
 
 .history-button-holder {
-  //padding: 1%;
   display: flex;
   flex-direction: column;
   align-items: center;
